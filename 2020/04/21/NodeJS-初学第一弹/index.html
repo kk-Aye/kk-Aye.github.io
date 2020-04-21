@@ -1,0 +1,425 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="Nodejs" />
+
+
+<meta name="description" content="Nodejs初学第一弹
+REPL:
+可以使用下划线获得上一个表达式的结果
+例如：
+12345678910111213$ node&gt; var x = 10undefined&gt; var ..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    NodeJS 初学第一弹 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                Home</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="NodeJS 初学第一弹">
+            
+            NodeJS 初学第一弹
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/Nodejs/" rel="tag">Nodejs</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/04/21</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="Nodejs初学第一弹"><a href="#Nodejs初学第一弹" class="headerlink" title="Nodejs初学第一弹"></a>Nodejs初学第一弹</h2><ol>
+<li><h2 id="REPL"><a href="#REPL" class="headerlink" title="REPL:"></a>REPL:</h2><ol>
+<li><p>可以使用下划线获得上一个表达式的结果</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ node</span><br><span class="line">&gt; <span class="keyword">var</span> x = <span class="number">10</span></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt; <span class="keyword">var</span> y = <span class="number">20</span></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt; x + y</span><br><span class="line"><span class="number">30</span></span><br><span class="line">&gt; <span class="keyword">var</span> sum = _</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt; <span class="built_in">console</span>.log(sum)</span><br><span class="line"><span class="number">30</span></span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.可以使用以下命令保存或载入REPL绘画到指定文件</p>
+<ul>
+<li><strong>.save filename</strong> - 保存当前的 Node REPL 会话到指定文件</li>
+<li><strong>.load filename</strong> - 载入当前 Node REPL 会话的文件内容。</li>
+</ul>
+</li>
+<li><h2 id="异步编程的直接体现就是回调函数"><a href="#异步编程的直接体现就是回调函数" class="headerlink" title="异步编程的直接体现就是回调函数"></a>异步编程的直接体现就是回调函数</h2><ol>
+<li><p>回调函数一般作为函数的最后一个参数出现</p>
+<ol>
+<li><p>举个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params">name, age, callback</span>) </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>他实现了非阻塞代码，也就是多任务同时进行，并发操作</p>
+<p>如下文件读取代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'input.txt'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="built_in">console</span>.error(err);</span><br><span class="line">    <span class="built_in">console</span>.log(data.toString());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"程序执行结束!"</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-事件循环："><a href="#3-事件循环：" class="headerlink" title="3.事件循环："></a>3.事件循环：</h2><p>​    结构图如下:</p>
+<p>​    <img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578023258787.png" alt="1578023258787"></p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>1.首先了解绑定事件和触发事件：
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 events 模块</span></span><br><span class="line"><span class="keyword">var</span> events = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="comment">// 创建 eventEmitter 对象</span></span><br><span class="line"><span class="keyword">var</span> eventEmitter = <span class="keyword">new</span> events.EventEmitter();</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 绑定事件及事件的处理程序</span></span><br><span class="line">eventEmitter.on(<span class="string">'eventName'</span>, eventHandler);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 触发事件</span></span><br><span class="line">eventEmitter.emit(<span class="string">'eventName'</span>);</span><br></pre></td></tr></table></figure></code></pre><p>​                </p>
+<p>​        2.实例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">`</span></span><br><span class="line"><span class="string">		// 引入 events 模块</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> events = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="comment">// 创建 eventEmitter 对象</span></span><br><span class="line"><span class="keyword">var</span> eventEmitter = <span class="keyword">new</span> events.EventEmitter();</span><br><span class="line"><span class="comment">// 创建事件处理程序</span></span><br><span class="line"><span class="keyword">var</span> connectHandler = <span class="function"><span class="keyword">function</span> <span class="title">connected</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'连接成功。'</span>);</span><br><span class="line"><span class="comment">// 触发 data_received 事件 </span></span><br><span class="line">eventEmitter.emit(<span class="string">'data_received'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 绑定 connection 事件处理程序</span></span><br><span class="line">eventEmitter.on(<span class="string">'connection'</span>, connectHandler);</span><br><span class="line"><span class="comment">// 使用匿名函数绑定 data_received 事件</span></span><br><span class="line">eventEmitter.on(<span class="string">'data_received'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'数据接收成功。'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 触发 connection 事件 </span></span><br><span class="line">eventEmitter.emit(<span class="string">'connection'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"程序执行完毕。"</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="4-Buffer"><a href="#4-Buffer" class="headerlink" title="4.Buffer:"></a>4.Buffer:</h2><p>​    1.<strong>Buffer.alloc(size[, fill[, encoding]])：</strong> 返回一个指定大小的 Buffer 实例，如果没有设置 fill，则默认填满 0</p>
+<p>​    2.<strong>Buffer.from(array)：</strong> 返回一个被 array 的值初始化的新的 Buffer 实例（传入的 array 的元素只能是数字，不然就会自动被 0 覆盖）</p>
+<p>​    3.写入node缓存区的语法如下：    </p>
+<p>​        buf.write(string[, offset[, length]][, encoding])</p>
+<p>​    4.读取node缓存区的语法如下：</p>
+<p>​        </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">buf = Buffer.alloc(<span class="number">26</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; <span class="number">26</span> ; i++) &#123;</span><br><span class="line">  buf[i] = i + <span class="number">97</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( buf.toString(<span class="string">'ascii'</span>));       <span class="comment">// 输出: abcdefghijklmnopqrstuvwxyz</span></span><br><span class="line"><span class="built_in">console</span>.log( buf.toString(<span class="string">'ascii'</span>,<span class="number">0</span>,<span class="number">5</span>));   <span class="comment">// 输出: abcde</span></span><br><span class="line"><span class="built_in">console</span>.log( buf.toString(<span class="string">'utf8'</span>,<span class="number">0</span>,<span class="number">5</span>));    <span class="comment">// 输出: abcde</span></span><br><span class="line"><span class="built_in">console</span>.log( buf.toString(<span class="literal">undefined</span>,<span class="number">0</span>,<span class="number">5</span>)); <span class="comment">// 使用 'utf8' 编码, 并输出: abcde</span></span><br></pre></td></tr></table></figure>
+
+<p>​            </p>
+<p>​    5.缓存区合并</p>
+<p>​        </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Buffer.concat(list[, totalLength])</span><br></pre></td></tr></table></figure>
+
+<p>​    实例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer1 = Buffer.from((<span class="string">'菜鸟教程'</span>));</span><br><span class="line"><span class="keyword">var</span> buffer2 = Buffer.from((<span class="string">'www.runoob.com'</span>));</span><br><span class="line"><span class="keyword">var</span> buffer3 = Buffer.concat([buffer1,buffer2]);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"buffer3 内容: "</span> + buffer3.toString());</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<p>​    6.缓存区比较：</p>
+<p>​        buf.compare(otherBuffer);</p>
+<p>​        </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer1 = Buffer.from(<span class="string">'ABC'</span>);</span><br><span class="line"><span class="keyword">var</span> buffer2 = Buffer.from(<span class="string">'ABCD'</span>);</span><br><span class="line"><span class="keyword">var</span> result = buffer1.compare(buffer2);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(result &lt; <span class="number">0</span>) &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(buffer1 + <span class="string">" 在 "</span> + buffer2 + <span class="string">"之前"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(result == <span class="number">0</span>)&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(buffer1 + <span class="string">" 与 "</span> + buffer2 + <span class="string">"相同"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(buffer1 + <span class="string">" 在 "</span> + buffer2 + <span class="string">"之后"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    7.拷贝缓存区：</p>
+<p>​        buf.copy(buf1,index), //本质上是代替</p>
+<p>​        </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf1 = Buffer.from(<span class="string">'abcdefghijkl'</span>);</span><br><span class="line"><span class="keyword">var</span> buf2 = Buffer.from(<span class="string">'RUNOOB'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将 buf2 插入到 buf1 指定位置上</span></span><br><span class="line">buf2.copy(buf1, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(buf1.toString());</span><br></pre></td></tr></table></figure>
+
+<p>​    8.缓存区裁剪：</p>
+<p>​    buf.slice([start[, end]])</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer1 = Buffer.from(<span class="string">'runoob'</span>);</span><br><span class="line"><span class="comment">// 剪切缓冲区</span></span><br><span class="line"><span class="keyword">var</span> buffer2 = buffer1.slice(<span class="number">0</span>,<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"buffer2 content: "</span> + buffer2.toString());</span><br></pre></td></tr></table></figure>
+
+<p>​    9.缓存区长度：</p>
+<p>​    buf.length;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buffer = Buffer.from(<span class="string">'www.runoob.com'</span>);</span><br><span class="line"><span class="comment">//  缓冲区长度</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"buffer length: "</span> + buffer.length);</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<h2 id="5-Stream流："><a href="#5-Stream流：" class="headerlink" title="5.Stream流："></a>5.Stream流：</h2><p>​    1.所有的 Stream 对象都是 EventEmitter 的实例。常用的事件有：</p>
+<ul>
+<li><p><strong>data</strong> - 当有数据可读时触发。</p>
+</li>
+<li><p><strong>end</strong> - 没有更多的数据可读时触发。</p>
+</li>
+<li><p><strong>error</strong> - 在接收和写入过程中发生错误时触发。</p>
+</li>
+<li><p><strong>finish</strong> - 所有数据已被写入到底层系统时触发。</p>
+<p>2.从流中读取数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">	var readerStream &#x3D; fs.createReadStream(‘1.txt’);</span><br><span class="line"></span><br><span class="line">​	readerStream.setEncoding(&#39;utf8&#39;);</span><br><span class="line"></span><br><span class="line">​	readerStream.on(&#39;data&#39;,function(chunk)&#123;</span><br><span class="line"></span><br><span class="line">​	data+&#x3D;chunk;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">​	readerStream.on(&#39;end&#39;,function()&#123;</span><br><span class="line"></span><br><span class="line">​	console.log(data);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">​	readerStream.on(&#39;error&#39;,function(err)&#123;</span><br><span class="line"></span><br><span class="line">​	console.log(err.stack);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+<pre><code>3.向流中写入数据:</code></pre><p>  ​    </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var writeStream &#x3D; fs.createWriteStream(&#39;1.txt&#39;);</span><br><span class="line"></span><br><span class="line">writeSream.write(data,&#39;utf8&#39;);</span><br><span class="line"></span><br><span class="line">writeStream.end();</span><br></pre></td></tr></table></figure>
+
+<p>  ​    </p>
+<p>  4.管道流：</p>
+<p>  ​    </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var fs &#x3D; require(&quot;&#39;fs&#39;&quot;);</span><br><span class="line"></span><br><span class="line">var readerStream &#x3D; fs.createReadStream(&#39;1.txt&#39;);</span><br><span class="line"></span><br><span class="line">var writeStream &#x3D; fs.createWriteStream(&#39;2.txt&#39;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>  readerStream.pipe(writeStream);</p>
+<p>  console.log();</p>
+<p>  ​    </p>
+<p>  5.链式流：</p>
+<p>  ​    压缩：</p>
+<p>  ​        </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var fs &#x3D; require(&quot;fs&quot;);</span><br><span class="line">var zlib &#x3D; require(&#39;zlib&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 压缩 input.txt 文件为 input.txt.gz</span><br><span class="line">fs.createReadStream(&#39;input.txt&#39;)</span><br><span class="line">  .pipe(zlib.createGzip())</span><br><span class="line">  .pipe(fs.createWriteStream(&#39;input.txt.gz&#39;));</span><br><span class="line">  </span><br><span class="line">console.log(&quot;文件压缩完成。&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>  ​    </p>
+<p>  ​    解压：</p>
+<p>  ​        </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var fs &#x3D; require(&quot;fs&quot;);</span><br><span class="line">var zlib &#x3D; require(&#39;zlib&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 解压 input.txt.gz 文件为 input.txt</span><br><span class="line">fs.createReadStream(&#39;input.txt.gz&#39;)</span><br><span class="line">  .pipe(zlib.createGunzip())</span><br><span class="line">  .pipe(fs.createWriteStream(&#39;input.txt&#39;));</span><br><span class="line">  </span><br><span class="line">console.log(&quot;文件解压完成。&quot;);</span><br></pre></td></tr></table></figure>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/04/21/%E6%8E%A7%E5%88%B6%E5%99%A8%E6%96%B9%E6%B3%95%E7%9A%84%E7%A9%BA%E6%93%8D%E4%BD%9C/" class="pre-post btn btn-default" title='控制器方法的空操作'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            控制器方法的空操作</span>
+    </a>
+    
+    
+    <a href="/2020/04/21/hello-world/" class="next-post btn btn-default" title='Hello World'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Hello World</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'en'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nodejs初学第一弹"><span class="toc-text">Nodejs初学第一弹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#REPL"><span class="toc-text">REPL:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异步编程的直接体现就是回调函数"><span class="toc-text">异步编程的直接体现就是回调函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-事件循环："><span class="toc-text">3.事件循环：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Buffer"><span class="toc-text">4.Buffer:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Stream流："><span class="toc-text">5.Stream流：</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
